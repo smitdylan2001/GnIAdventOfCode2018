@@ -1,0 +1,12 @@
+#!/bin/bash
+
+CURRENT=0
+addOffsets() 
+{
+	while read OFFSET ; do
+		let "CURRENT=CURRENT$OFFSET"
+	done
+	echo $CURRENT
+}
+
+addOffsets < input.txt

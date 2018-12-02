@@ -1,0 +1,24 @@
+#!/bin/bash
+
+declare -A FREQS
+
+CURRENT=0
+RECURRED=0
+addOffsets() 
+{
+	while read OFFSET ; do
+		let "CURRENT=CURRENT$OFFSET"
+		echo $CURRENT
+		if [ ${FREQS[$CURRENT]} ] ; then
+			echo First recurrence: $CURRENT
+			RECURRED=1
+			break
+		else
+			FREQS[$CURRENT]=1
+		fi
+	done
+}
+
+while [ $RECURRED -eq 0 ] ; do
+	addOffsets < input.txt
+done
