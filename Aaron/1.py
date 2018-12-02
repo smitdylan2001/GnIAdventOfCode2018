@@ -1,13 +1,18 @@
 __author__ = 'aoostdijk'
 
-from math import *
-
+# Bit of a mess, because I wrote several sorting functions before
+#  trying a set that somebody else had used
+#  I was actually still building the binary search when the ordered insert solved it
+#
+# The set solution is a lot faster though,
+#  probably because its a native implementation that uses pointers
+#  and it uses less look-ups than the binary search (hashed)
 
 f = open("input_1.txt", 'r')
 
 lines = f.readlines()
 
-# brute force
+# brute force, takes 15 minutes
 def contains( value, list ):
     if value == 0: return True
 
@@ -17,18 +22,14 @@ def contains( value, list ):
             return True
     return False
 
-
 freq = 0
 seenFreq = []
-
-seenPos = []
-seenNeg = []
-
 seenDic = set([])
 
-# looks for target in array, if it doesn't find it, it stores it in a sorted way
-# I implemented this wrong I think because it always ends with one-value separation in the end
-# hence the mess inside guess == min...
+# Binary Search, takes 5 seconds in this implementation
+#  looks for target in array, if it doesn't find it, it stores it in a sorted way
+#  I implemented this wrong I think because it always ends with one-value separation in the end
+#  hence the mess inside guess == min...
 def binarySearchInsert(arr, target):
     min = 0
     max = len(arr)-1
