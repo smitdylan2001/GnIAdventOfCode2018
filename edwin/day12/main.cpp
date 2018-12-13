@@ -1,12 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <vector>
-#include <algorithm>
-#include <set>
-#include <regex>
-#include <chrono>
-#include <iomanip>
+#include "bits/stdc++.h"
 
 #define INPUT "/home/edwin/code/GnIAdventOfCode2018/edwin/day11/input.txt"
 //#define INPUT "/home/edwin/code/GnIAdventOfCode2018/edwin/day11/input-test.txt"
