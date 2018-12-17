@@ -46,21 +46,14 @@ def solve(input):
                 guards[currentGuard]['sleep'][i] += 1
 
     chosenGuard = -1
-    mostMinutesAsleep = -1
-    for guardID, guard in guards.items():
-        minutesAsleep = 0
-        for sleepTimes in guard['sleep']:
-            minutesAsleep += sleepTimes
-        if minutesAsleep > mostMinutesAsleep:
-            mostMinutesAsleep = minutesAsleep
-            chosenGuard = guardID
-
     chosenMinute = -1
     highest = -1
-    for i in range(len(guards[chosenGuard]['sleep'])):
-        if guards[chosenGuard]['sleep'][i] > highest:
-            highest = guards[chosenGuard]['sleep'][i]
-            chosenMinute = i
+    for guardID, guard in guards.items():
+        for minute in range(len(guard['sleep'])):
+            if guard['sleep'][minute] > highest:
+                chosenGuard = guardID
+                chosenMinute = minute
+                highest = guard['sleep'][minute]
 
     print(chosenGuard * chosenMinute)
 
